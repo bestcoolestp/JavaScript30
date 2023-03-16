@@ -19,7 +19,7 @@ body,html {
 }
 
 .key {
-  border: .4rem solid black;
+  border: .4rem solid rgb(168, 245, 180);
   border-radius: .5rem;
   margin: 1rem;
   font-size: 1.5rem;
