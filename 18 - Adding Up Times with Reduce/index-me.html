@@ -66,6 +66,32 @@
       <li data-time="1:56">Video 57</li>
       <li data-time="4:04">Video 58</li>
     </ul>
-    <script></script>
+    <script>
+      const timeNodes = document.querySelectorAll("[data-time]"); //select all the nodes with data-time attribute
+      //   console.log(timeNodes); //log the nodes to the console
+
+      // convert the node lists string into an array of time strings.
+      const timeArray = Array.from(timeNodes).map((node) => node.dataset.time);
+      //   console.log(timeArray);
+
+      // convert the time strings into an array of seconds
+      const totalSeconds = timeArray
+        .map((time) => {
+          const [mins, secs] = time.split(":").map(parseFloat); //split the time string into an array of mins and secs
+          return mins * 60 + secs; //convert the mins and secs into seconds
+        })
+        .reduce((total, seconds) => total + seconds); //add up all the seconds
+      console.log(totalSeconds);
+
+      // convert the total seconds into hours, mins and secs
+      let secondsLeft = totalSeconds;
+      const hours = Math.floor(secondsLeft / 3600);
+      secondsLeft = secondsLeft % 3600;
+
+      const mins = Math.floor(secondsLeft / 60);
+      secondsLeft = secondsLeft % 60;
+
+      console.log(hours, mins, secondsLeft);
+    </script>
   </body>
 </html>
